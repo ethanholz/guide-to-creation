@@ -6,3 +6,4 @@
     - import_tasks: tasks/nvim.yaml
     - import_tasks: tasks/dotfiles.yaml
     - import_tasks: tasks/git-config.yaml
+    - import_tasks: tasks/tools.yaml

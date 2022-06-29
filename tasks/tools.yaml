@@ -1,0 +1,22 @@
+- name: Install rustup
+  ansible.builtin.shell: curl https://sh.rustup.rs -sSf | sh
+  tags:
+    - install
+    - tools
+    - rust
+- name: Install apt packages
+  ansible.builtin.apt:
+    pkg:
+      - zoxide
+      - tmux
+      - zsh
+      - fzf
+  tags:
+    - install
+    - tools
+- name: Install starship.rs
+  ansible.builtin.shell: curl -sS https://starship.rs/install.sh | sh
+  tags:
+    - install
+    - tools
+    - rust
