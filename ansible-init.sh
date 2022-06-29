@@ -8,6 +8,7 @@ fi
 if ! command -v curl &> /dev/null
 then
     echo "curl not found please install"
+    exit
 fi
 if ! command -v pip &> /dev/null
 then
