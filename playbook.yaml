@@ -1,0 +1,8 @@
+- hosts: localhost
+  vars:
+    source_key: "~/.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+  tasks:
+    - include: tasks/nvim.yaml
+    - include: tasks/dotfiles.yaml
+    - include: tasks/git-config.yaml

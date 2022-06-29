@@ -1,0 +1,22 @@
+- name: Install stow
+  ansible.builtin.apt:
+    name: stow
+    tags:
+      - install
+      - dotfiles
+      - stow
+- name: Clone dotfiles
+  ansible.builtin.git:
+    repo: "git@github.com:ethanholz/config_files.git"
+    dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    recursive: yes
+    update: yes
+    accept_hostkey: yes
+    version: master
+    tags:
+      - install
+      - dotfiles
+      - stow
+
+# TO-DO: Add a way to auto stow my dotfiles
+

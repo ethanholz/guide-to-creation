@@ -1,0 +1,23 @@
+- name: Remove neovim
+  ansible.builtin.file:
+    path: ~/.local/bin/nvim
+    state: absent
+  tags:
+    - neovim
+    - install
+    - clean
+
+- name: Install neovim
+  block:
+    - name: Download neovim appimage
+      ansible.builtin.get_url:
+        url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        dest: ~/.local/bin/nvim
+    - name: Set neovim permissions
+      ansible.builtin.file:
+        path: ~/.local/bin/nvim
+        state: touch
+        mode: '0755'
+  tags:
+    - neovim
+    - install
