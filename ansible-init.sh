@@ -6,6 +6,8 @@ then
     exit
 fi
 sudo apt-get install python3-distutils -y
+# Install libfuse2 to use appimages
+sudo apt-get install libfuse2
 if ! command -v curl &> /dev/null
 then
     echo "curl not found... attempting install"
