@@ -3,6 +3,6 @@
     source_key: "~/.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
   tasks:
-    - include: tasks/nvim.yaml
-    - include: tasks/dotfiles.yaml
-    - include: tasks/git-config.yaml
+    - import_tasks: tasks/nvim.yaml
+    - import_tasks: tasks/dotfiles.yaml
+    - import_tasks: tasks/git-config.yaml

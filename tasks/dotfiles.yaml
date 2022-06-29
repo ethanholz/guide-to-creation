@@ -1,10 +1,18 @@
 - name: Install stow
   ansible.builtin.apt:
     name: stow
-    tags:
-      - install
-      - dotfiles
-      - stow
+  tags:
+    - install
+    - dotfiles
+    - stow
+- name: Remove dotfiles
+  ansible.builtin.file:
+    path: ~/.dotfiles
+    state: absent
+  tags:
+    - install
+    - dotfiles
+    - clean
 - name: Clone dotfiles
   ansible.builtin.git:
     repo: "git@github.com:ethanholz/config_files.git"
@@ -13,10 +21,8 @@
     update: yes
     accept_hostkey: yes
     version: master
-    tags:
-      - install
-      - dotfiles
-      - stow
-
-# TO-DO: Add a way to auto stow my dotfiles
+  tags:
+    - install
+    - dotfiles
+    - stow
 
