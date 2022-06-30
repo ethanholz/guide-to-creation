@@ -33,4 +33,4 @@ then
 else
     echo "Installation complete"
 fi
-
+export PATH=$PATH:~/.local/bin
