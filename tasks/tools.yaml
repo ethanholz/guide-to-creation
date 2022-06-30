@@ -19,3 +19,26 @@
   tags:
     - install
     - tools
+- name: Remove installed go version
+  ansible.builtin.file:
+    path: /usr/local/go
+    state: absent
+  become: true
+  tags:
+    - golang
+    - install
+    - clean
+- name: Install go
+  block:
+    - name: Download go 1.18.3
+      ansible.builtin.get_url:
+        url: https://go.dev/dl/go1.18.3.linux-amd64.tar.gz
+        dest: /tmp/go1.18.3.tar.gz
+    - name: Install go 1.18.3
+      ansible.builtin.unarchive:
+        src: /tmp/go1.18.3.tar.gz
+        dest: /usr/local
+      become: true
+  tags:
+    - golang
+    - install
