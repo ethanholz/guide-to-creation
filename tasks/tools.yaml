@@ -19,6 +19,14 @@
   tags:
     - install
     - tools
+- name: Install Alacritty
+  block:
+    - Name: Install Alacritty
+      ansible.builtin.shell: cargo install alacritty
+  tags:
+    - install
+    - tools
+    - terminal
 - name: Remove installed go version
   ansible.builtin.file:
     path: /usr/local/go
