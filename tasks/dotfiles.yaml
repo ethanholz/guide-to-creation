@@ -1,9 +1,13 @@
-- name: Install stow
+- name: Install stow and zsh
   ansible.builtin.apt:
-    name: stow
+    pkg: 
+     - stow
+     - zsh
+  become: true
   tags:
     - install
     - dotfiles
+    - zsh
     - stow
 - name: Remove dotfiles
   ansible.builtin.file:
@@ -25,4 +29,15 @@
     - install
     - dotfiles
     - stow
+- name: Install zsh dotfile
+  ansible.builtin.shell: cd {{ lookup('env', 'HOME') }}/.dotfiles && stow zsh
+  tags:
+    - install
+    - stow
+    - zsh
+- name: Change to zsh
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+  become: true
 

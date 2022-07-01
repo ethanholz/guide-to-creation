@@ -3,9 +3,9 @@
     source_key: "./.ssh/id_ed25519"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   tasks:
-    - name: Update Apt:
+    - name: Update Apt
       become: true
-      apt:
+      ansible.builtin.apt:
         force_apt_get: true
         update_cache: true
         state: present
